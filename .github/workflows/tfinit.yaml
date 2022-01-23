@@ -1,0 +1,21 @@
+name: terraform init
+
+on: push
+
+jobs:
+  tflint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Install prerequisites
+        run: ./bin/install-ubuntu.sh
+      - name: Terraform init
+        run: terraform init --backend=false
+      - name: tflint
+        uses: reviewdog/action-tflint@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          reporter: github-pr-check
+          filter_mode: added
+          flags: --module
+          level: error
