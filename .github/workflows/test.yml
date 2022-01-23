@@ -3,8 +3,8 @@ name: testing action
 on: push
 
 
-job:
- init:
-   run-on: ubuntu-latest
-   steps:
-     run: echo 'hello world'
+jobs:
+  init:
+    run-on: ubuntu-latest
+    steps:
+      - run: echo 'hello world'
