@@ -2,9 +2,8 @@ name: testing action
 
 on: push
 
-
 jobs:
   init:
-    run-on: ubuntu-latest
+    runs-on: ubuntu-latest
     steps:
       - run: echo 'hello world'
